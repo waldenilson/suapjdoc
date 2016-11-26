@@ -20,7 +20,7 @@ public class AuthGroup implements Serializable {
 	@Id
 	@SequenceGenerator(name="AUTH_GROUP_ID_GENERATOR", sequenceName="AUTH_GROUP_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUTH_GROUP_ID_GENERATOR")
-	private int id;
+	private Integer id;
 	
 	@Column
 	private String name;

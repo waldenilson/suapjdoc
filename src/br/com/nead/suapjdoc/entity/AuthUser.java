@@ -11,10 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="auth_user")
 public class AuthUser implements Serializable {
 
 	/**
@@ -25,7 +27,7 @@ public class AuthUser implements Serializable {
 	@Id
 	@SequenceGenerator(name="AUTH_USER_ID_GENERATOR", sequenceName="AUTH_USER_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUTH_USER_ID_GENERATOR")
-	private int id;
+	private Integer id;
 
 	private String username;
 	private String password;

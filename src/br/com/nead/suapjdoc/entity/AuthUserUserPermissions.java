@@ -19,7 +19,7 @@ public class AuthUserUserPermissions implements Serializable {
 	@Id
 	@SequenceGenerator(name="AUTH_USER_USER_PERMISSIONS_ID_GENERATOR", sequenceName="AUTH_USER_PERMISSIONS_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUTH_USER_USER_PERMISSIONS_ID_GENERATOR")
-	private int id;
+	private Integer id;
 	
 	public int getId() {
 		return id;

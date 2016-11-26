@@ -20,7 +20,7 @@ public class AuthPermission implements Serializable {
 	@Id
 	@SequenceGenerator(name="AUTH_PERMISSION_ID_GENERATOR", sequenceName="AUTH_PERMISSION_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUTH_PERMISSION_ID_GENERATOR")
-	private int id;
+	private Integer id;
 	
 	@Column
 	private String name;

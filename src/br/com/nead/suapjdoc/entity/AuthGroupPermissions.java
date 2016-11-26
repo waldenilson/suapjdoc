@@ -19,7 +19,7 @@ public class AuthGroupPermissions implements Serializable {
 	@Id
 	@SequenceGenerator(name="AUTH_GROUP_PERMISSIONS_ID_GENERATOR", sequenceName="AUTH_GROUP_PERMISSIONS_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUTH_GROUP_PERMISSIONS_ID_GENERATOR")
-	private int id;
+	private Integer id;
 	
 	public int getId() {
 		return id;
