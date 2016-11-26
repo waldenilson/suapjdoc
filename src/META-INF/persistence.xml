@@ -2,6 +2,12 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="suapjdoc">
 		<class>br.com.nead.suapjdoc.entity.AuthGroup</class>
+		<class>br.com.nead.suapjdoc.entity.AuthPermission</class>
+		<class>br.com.nead.suapjdoc.entity.AuthUser</class>
+		<class>br.com.nead.suapjdoc.entity.AuthUserGroups</class>
+		<class>br.com.nead.suapjdoc.entity.Documento</class>
+		<class>br.com.nead.suapjdoc.entity.AuthUserUserPermissions</class>
+		<class>br.com.nead.suapjdoc.entity.AuthGroupPermissions</class>
 		<properties>
 	        <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 	        <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/suapjdoc"/>
