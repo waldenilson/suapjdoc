@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+		<ui:include src="/base/cabecalho.xhtml" />
+
+		<style type="text/css">
+			a:link, a:visited {
+				text-decoration: none;
+				color: #{contaAdvocaciaMBean.contaAdvocacia.cormenu};
+			    outline: 0;
+			}
+			a:hover, a:focus, a:active {
+			  color: #ddd;
+			}		
+			.sidemenu ul li a:link,
+			.sidemenu ul li a:visited {
+			    color: #{contaAdvocaciaMBean.contaAdvocacia.cormenu};
+			    padding: 0;
+				font-weight: bold;
+			    text-transform: uppercase;
+			    font-family:  'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', Verdana, Sans-Serif;
+			    font-size: 12px;
+			}
+			aside .post-meta ul li a:hover { color: #ddd; }	
+		</style>
+	</h:head>
+
+
+	<h:body id="top" style="background:#{contaAdvocaciaMBean.contaAdvocacia.corfundo}">
+	
+	<!--header -->
+	<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+		<div id="header-wrap" style="background:#{contaAdvocaciaMBean.contaAdvocacia.corfundo}">
+			<header>
+			
+			    <hgroup>
+			        <a href="/advx"><img alt="#{contaAdvocaciaMBean.contaAdvocacia.nome}" title="#{contaAdvocaciaMBean.contaAdvocacia.nome}" src="/advx/img/logo/#{contaAdvocaciaMBean.contaAdvocacia.logotipo}"/></a>
+			    </hgroup>
+			    <form id="quick-search" method="get" action="index.html">
+							    
+				</form>
+			<!--/header-->
+			</header>
+		</div>
+	</p:outputPanel>	
+	<!-- content-wrap -->
+	<div id="content-wrap">
+	
+	    <!-- content -->
+	    <div id="content" class="clearfix">
+				
+	   	    <!-- main -->
+	        <div id="main">
+		      	    <article class="post">
+				
+		      		    <div class="primary">
+					
+					<h:form id="form" style="padding: 32px 40px;width:95%">
+							<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+
+								<p:menubar style="margin-bottom:20px">
+									<p:menuitem icon="ui-icon-note" value="Minhas Tarefas" url="/processo/minhas-tarefas.htm"/>
+									<p:menuitem icon="ui-icon-mail-closed" value="Minhas Mensagens" url="/processo/minhas-mensagens.htm"/>
+									<p:outputPanel rendered="#{autenticacaoMBean.colaboradorLogado != null ? 'true' : 'false'}">
+								    	<p:menuitem icon="ui-icon-contact" value="Meus Contatos" url="/agenda/meus-contatos.htm" />
+									</p:outputPanel>
+									<p:menuitem icon="ui-icon-calendar" value="Meus Eventos" url="/agenda/meus-eventos.htm" />
+									<p:menuitem icon="ui-icon-document" value="Meus Documentos" url="/processo/meus-documentos.htm" />
+									<p:menuitem icon="ui-icon-close" value="Sair" ajax="false" actionListener="#{autenticacaoMBean.sair}" />
+								</p:menubar>							
+	
+			                    <h2><a href="#"><ui:insert name="funcionalidade" /></a></h2>
+			                    <p class="post-info"><span><ui:insert name="descricao" /></span></p>
+
+							</p:outputPanel>
+							<p>
+								<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+									<p:messages autoUpdate="true" showDetail="true" closable="true" />
+									<ui:insert name="body" />
+								</p:outputPanel>
+								<p:outputPanel rendered="#{!autenticacaoMBean.usuarioLogado}">
+									<p:messages autoUpdate="true" showDetail="true" closable="true" />
+									<table style="width:70%;text-align:center">
+										<thead>
+											<tr>
+												<td>ADVX</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<p:inputText id="login" value="#{autenticacaoMBean.usuario.login}" />
+													<p:watermark value="Usuário ou Email" for="login" />
+												</td>
+											</tr><tr>
+												<td>
+													<p:password id="senha" value="#{autenticacaoMBean.usuario.senha}" />
+													<p:watermark value="Senha" for="senha" />
+												</td>
+											</tr><tr>
+												<td>
+													<p:commandButton value="ACESSAR" ajax="false" actionListener="#{autenticacaoMBean.autenticar}" />
+												</td>
+											</tr><tr>
+												<td>
+													<p:commandLink value="Esqueci minha senha" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+																	
+								</p:outputPanel>
+							</p>
+					</h:form>
+		                </div>
+	
+						<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+		
+			                <aside>
+			
+			            	    <p class="dateinfo">
+			            	    	<a href="/advx/configuracoes/perfil.htm">
+			            	    		<p:outputPanel rendered="#{autenticacaoMBean.clienteLogado != null ? 'true' : 'false'}">
+				            	    		<img width="100px" 
+				            	    			title="#{autenticacaoMBean.clienteLogado.usuarioBean.pessoaBean.nome}" 
+				            	    			src="/advx/img/user/#{autenticacaoMBean.usuario.foto}"/>
+			            	    		</p:outputPanel>
+			            	    		<p:outputPanel rendered="#{autenticacaoMBean.clienteLogado != null ? 'false' : 'true'}">
+				            	    		<img width="100px" 
+				            	    			title="#{autenticacaoMBean.colaboradorLogado.pessoaFisicaBean.pessoaBean.nome}" 
+				            	    			src="/advx/img/user/#{autenticacaoMBean.usuario.foto}"/>
+			            	    		</p:outputPanel>
+			            	    	</a>
+			            	    </p>
+					    
+			               	    <div class="post-meta">
+			                  		<h:form>
+				                  	
+									    <div class="sidemenu">
+							
+							                <ul>
+												    <p:outputPanel rendered="#{permissaoMBean.visualizarProcessos}">
+								                		<li><a href="/advx/processo/processos.htm" title="processos">Processos </a> </li>
+													</p:outputPanel>
+													
+								                    <p:outputPanel rendered="#{permissaoMBean.clientes}">
+								                		<li><a href="/advx/usuarios/clientes.htm" title="clientes">Clientes </a> </li>
+													</p:outputPanel>
+													
+								                    <p:outputPanel rendered="#{permissaoMBean.colaboradores}">
+								                    	<li><a href="/advx/usuarios/colaboradores.htm" title="colaboradores">Colaboradores </a> </li>
+													</p:outputPanel>
+
+								                    <p:outputPanel rendered="#{permissaoMBean.escritorios}">
+								                    	<li><a href="/advx/configuracoes/escritorios.htm" title="escritorios">Escritórios </a> </li>
+								                    </p:outputPanel>
+								                    
+								                    <p:outputPanel rendered="#{permissaoMBean.tpdocumento}">
+									                    <li><a href="/advx/configuracoes/tpdocumento.htm" title="tipos-de-documento">Tipos de documento </a> </li>
+													</p:outputPanel>
+
+								                    <p:outputPanel rendered="#{permissaoMBean.status}">
+								                    	<li><a href="/advx/configuracoes/status.htm" title="status">Status </a> </li>
+													</p:outputPanel>
+
+								                    <p:outputPanel rendered="#{permissaoMBean.grupos}">
+								                    	<li><a href="/advx/configuracoes/grupos.htm" title="status">Grupo de usuários </a> </li>
+								                    </p:outputPanel>
+								                    
+								                    <p:outputPanel rendered="#{permissaoMBean.configuracoes}">
+								                		<li><a href="/advx/configuracoes/conta.htm" title="configuracoes">Configurações </a> </li>
+													</p:outputPanel>
+											</ul>
+																		
+										</div><br/>
+										<h:outputText value="#{autenticacaoMBean.qtdDocumentos}">
+											<f:convertNumber maxFractionDigits="1" />
+										</h:outputText>
+										<h:outputText value="% de 2GB" />
+									</h:form>
+								</div>
+			
+			                </aside>
+			
+						</p:outputPanel>
+				    </article>
+	        <!-- /main -->
+	        </div>
+	
+	    <!-- content -->
+		</div>
+	
+	<!-- /content-out -->
+	</div>
+			
+	<!-- extra -->
+	<div id="extra-wrap"><div id="extra" class="clearfix">
+	
+	
+	<!-- /extra -->
+	</div></div>
+
+	<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+	
+	<!-- footer -->
+		<footer>
+			
+			<p class="footer-left">
+				Revisão: 71 | <a href="#{autenticacaoMBean.usuario.contaAdvocacia.website}" target="blank"> #{autenticacaoMBean.usuario.contaAdvocacia.website} </a>
+			</p>
+		
+			<p class="footer-right">
+			   	<a href="#">advx.com.br</a> |
+		        <a href="#top" class="back-to-top">Voltar para o topo</a>
+		    </p>
+		
+		<!-- /footer -->
+		</footer>
+		
+	</p:outputPanel>	
+	</h:body>
+
+</f:view>

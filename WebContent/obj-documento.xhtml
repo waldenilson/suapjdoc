@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/base/base.xhtml">
+      
+      	<ui:define name="funcionalidade">
+			Processo: #{processoMBean.processo.numero}
+		</ui:define>
+		
+		<ui:define name="descricao">
+			<h:outputText value="#{processoMBean.processo.titulo}" rendered="#{!permissaoMBean.editarProcessos}" />
+			<p:spacer height="20" rendered="#{!permissaoMBean.editarProcessos}" />
+			<h:outputText value="#{processoMBean.processo.descricao}" rendered="#{!permissaoMBean.editarProcessos}" />
+		</ui:define>
+		
+		<ui:define name="body">
+			<p:outputPanel id="processo" rendered="#{permissaoMBean.visualizarProcessos}">
+				<h:form id="form-processo">
+				
+					<p:outputPanel style="width:100%" rendered="#{!permissaoMBean.editarProcessos}">
+						
+						<table style="width:100%">
+							<tbody>
+								<tr>
+									<td>
+										<h:outputText value="Processo Interno" rendered="#{processoMBean.processo.interno}" />
+										<h:outputText value="Processo Externo" rendered="#{!processoMBean.processo.interno}" />
+									</td>
+									<td>
+										<h:outputText value="Cliente: " />
+										<h:outputText value="#{processoMBean.processo.clienteBean.usuarioBean.pessoaBean.nome}" />
+									</td>
+									<td>
+										<h:outputText value="Endereço / Filial: " />
+										<h:outputText value="#{processoMBean.processo.escritorioBean.nome}" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="Início: " />
+										<h:outputText value="#{processoMBean.processo.inicio}" >
+											<f:convertDateTime locale="pt" pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</td>
+									<td>
+										<h:outputText value="Fim: " />
+										<h:outputText value="#{processoMBean.processo.fim}" >
+											<f:convertDateTime locale="pt" pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</td>
+									<td>
+										<h:outputText value="Status: " />
+										<h:outputText value="#{processoMBean.processo.statusBean.nome}" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<h:outputText value="Colaboradores: " />
+										<h:outputText value="#{processoMBean.colaboradorListString}" />
+									</td>
+								</tr>
+							</tbody>
+						</table><br/>
+										
+					</p:outputPanel>
+					
+					<br/>					
+					
+					<p:tabView style="border:0px">
+						<p:tab title="Processo" rendered="#{permissaoMBean.editarProcessos}">
+									<table>
+										<tbody>
+												<tr>
+													<td> <h:outputText value="Processo Interno: " /> </td>
+													<td> <p:selectBooleanCheckbox value="#{processoMBean.processo.interno}" /> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Número: " /> </td>
+													<td> <p:inputMask mask="9999999-99.9999.9.99.9999" value="#{processoMBean.processo.numero}" /> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Titulo: " /> </td>
+													<td> <p:inputText value="#{processoMBean.processo.titulo}" /> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Endereço / Filial: " /> </td>
+													<td> <p:selectOneMenu style="width:150px" value="#{processoMBean.processo.escritorioBean}" converter="simpleConverter">
+															<f:selectItems value="#{processoMBean.escritorioList}"/>
+														</p:selectOneMenu> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Cliente: " /> </td>
+													<td> <p:selectOneMenu style="width:150px" value="#{processoMBean.processo.clienteBean}" converter="simpleConverter">
+															<f:selectItems value="#{processoMBean.clienteList}"/>
+														</p:selectOneMenu> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Sobre o processo: " /> </td>
+													<td> <p:inputTextarea value="#{processoMBean.processo.descricao}" /> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Início em: " /> </td>
+													<td> <p:calendar value="#{processoMBean.processo.inicio}" locale="pt" pattern="dd/MM/yyyy" /> </td>
+												</tr>
+												<tr>
+													<td> <h:outputText value="Prazo: " /> </td>
+													<td> <p:calendar value="#{processoMBean.processo.fim}" locale="pt" pattern="dd/MM/yyyy" /> </td>
+												</tr>
+												<p:outputPanel rendered="#{permissaoMBean.modificarStatusProcesso}">
+													<tr>
+														<td> <h:outputText  value="Status: " /> </td>
+														<td> <p:selectOneMenu style="width:150px" value="#{processoMBean.processo.statusBean}" converter="simpleConverter">
+																<f:selectItems value="#{processoMBean.statusList}"/>
+															</p:selectOneMenu> </td>
+													</tr>
+												</p:outputPanel>
+												<tr>
+													<td> <h:outputText value="Desabilitar / Habilitar: " /> </td>
+													<td> <p:selectBooleanCheckbox value="#{processoMBean.processo.ativo}" /> </td>
+												</tr>
+										</tbody>
+									</table>	
+									<br/>
+									<p:outputPanel rendered="#{permissaoMBean.editarProcessos}">
+										<p:commandButton value="SALVAR" ajax="false" styleClass="btnovo" actionListener="#{processoMBean.salvar}" />
+									</p:outputPanel>								
+						</p:tab>
+						<p:tab title="Colaboradores" rendered="#{permissaoMBean.editarProcessos}">
+							<p:dataTable var="pc" value="#{processoMBean.colaboradorList}">
+								<p:column> <p:selectBooleanCheckbox value="#{pc.check}" /> </p:column>
+								<p:column> <h:outputText value="#{pc.colaborador.usuarioBean.pessoaBean.nome}" /> </p:column>
+							</p:dataTable>
+						</p:tab>
+						<p:tab title="Documentos">
+							<p:outputPanel rendered="#{permissaoMBean.cadastrarDocumentos}">
+								<p:commandButton value="NOVO DOCUMENTO" styleClass="btnovo" actionListener="#{documentoMBean.novo}" />
+							</p:outputPanel><br/><br/>
+							<p:outputPanel>		
+								<p:dataTable rowKey="#{documento.id}" selectionMode="single" 
+									emptyMessage="Nenhum documento encontrado"
+									selection="#{documentoMBean.documento}" value="#{processoMBean.documentoList}" var="documento">
+									<p:ajax listener="#{documentoMBean.selecionarProcesso}" event="rowSelect">
+											<f:setPropertyActionListener target="#{documentoMBean.documento}" value="#{documento}" />
+									</p:ajax>
+									<p:column sortBy="#{documento.titulo}" filterBy="#{documento.titulo}" filterMatchMode="contains" headerText="Titulo" style="width:50%">
+										<h:outputText value="#{documento.titulo}" />
+									</p:column>
+									<p:column headerText="Data do Upload" style="width:15%">
+										<h:outputText value="#{documento.dataPostagem}" >
+											<f:convertDateTime pattern="dd/MM/yyyy" locale="pt"/>
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Tipo" style="width:25%">
+										<h:outputText value="#{documento.tpdocumentoBean.nome}" />
+									</p:column>
+									<p:column headerText="Tamanho" style="width:10%">
+										<h:outputText value="#{documento.tamanho}" />
+									</p:column>
+								</p:dataTable>
+							</p:outputPanel>
+						</p:tab>
+						<p:tab title="Tarefas">
+							<p:outputPanel rendered="#{permissaoMBean.cadastrarTarefas}">
+								<p:commandButton value="NOVA TAREFA" styleClass="btnovo" actionListener="#{tarefaMBean.novo}" />
+							</p:outputPanel><br/><br/>
+							<p:outputPanel>
+								<p:dataTable rowKey="#{tarefa.id}" selectionMode="single" 
+									emptyMessage="Nenhuma tarefa encontrada"
+									selection="#{tarefaMBean.tarefa}" value="#{processoMBean.tarefaList}" var="tarefa">
+									<p:ajax listener="#{tarefaMBean.selecionar}" event="rowSelect">
+											<f:setPropertyActionListener target="#{tarefaMBean.tarefa}" value="#{tarefa}" />
+									</p:ajax>
+									<p:column sortBy="assunto" filterBy="assunto" filterMatchMode="contains" headerText="Assunto" style="width:40%">
+										<h:outputText value="#{tarefa.assunto}"/>
+									</p:column>
+									<p:column headerText="Criada em" style="width:15%">
+										<h:outputText value="#{tarefa.inicio}">
+											<f:convertDateTime locale="pt" pattern="dd/MM/yyyy"/>
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Prazo" style="width:15%">
+										<h:outputText value="#{tarefa.fim}">
+											<f:convertDateTime locale="pt" pattern="dd/MM/yyyy"/>
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Status" style="width:30%">
+										<h:outputText value="#{tarefa.statusBean.nome}" />
+									</p:column>
+								</p:dataTable>
+							</p:outputPanel>						
+						</p:tab>
+						<p:tab title="Mensagens">
+							<p:outputPanel>
+								<p:commandButton value="NOVA MENSAGEM" styleClass="btnovo" actionListener="#{mensagemMBean.novo}" />
+							</p:outputPanel><br/><br/>
+							<p:outputPanel>
+								<p:dataTable rowKey="#{mensagem.id}" selectionMode="single" 
+									emptyMessage="Nenhuma mensagem encontrada"
+									selection="#{mensagemMBean.mensagem}" value="#{processoMBean.mensagemList}" var="mensagem">
+									<p:ajax listener="#{mensagemMBean.selecionar}" event="rowSelect">
+											<f:setPropertyActionListener target="#{mensagemMBean.mensagem}" value="#{mensagem}" />
+									</p:ajax>
+									<p:column sortBy="assunto" filterBy="assunto" filterMatchMode="contains" headerText="Assunto" style="width:30%">
+										<h:outputText value="#{mensagem.assunto}" />
+									</p:column>
+									<p:column headerText="Postado por" style="width:70%">
+										<h:outputText value="#{mensagem.usuario.pessoaBean.nome}" />
+									</p:column>
+								</p:dataTable>
+							</p:outputPanel>						
+						</p:tab>
+						<p:tab title="Eventos">
+							<p:outputPanel rendered="#{permissaoMBean.cadastrarEventos}">
+								<p:commandButton value="NOVO EVENTO" actionListener="#{eventoMBean.novo}" styleClass="btnovo" />
+							</p:outputPanel><br/><br/>
+							<p:outputPanel>		
+								<p:dataTable rowKey="#{evento.id}" selectionMode="single" 
+									emptyMessage="Nenhum evento encontrado"
+									selection="#{eventoMBean.evento}" value="#{processoMBean.eventoList}" var="evento">
+									<p:ajax listener="#{eventoMBean.selecionar}" event="rowSelect">
+											<f:setPropertyActionListener target="#{eventoMBean.evento}" value="#{evento}" />
+									</p:ajax>
+									<p:column sortBy="#{evento.titulo}" filterBy="#{evento.titulo}" filterMatchMode="contains" headerText="Titulo" style="width:40%">
+										<h:outputText value="#{evento.titulo}" />
+									</p:column>
+									<p:column headerText="Início" style="width:20%">
+										<h:outputText value="#{evento.inicio}">
+											<f:convertDateTime pattern="dd/MM/yyyy HH:mm" locale="pt" />
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Fim" style="width:20%">
+										<h:outputText value="#{evento.fim}">
+											<f:convertDateTime pattern="dd/MM/yyyy HH:mm" locale="pt"/>
+										</h:outputText>
+									</p:column>
+									<p:column headerText="Criado por" style="width:20%">
+										<h:outputText value="#{evento.usuario.pessoaBean.nome}" />
+									</p:column>
+								</p:dataTable>
+							</p:outputPanel>						
+						</p:tab>				
+					</p:tabView>					
+				</h:form>
+			</p:outputPanel>
+			
+			<p:outputPanel rendered="#{!permissaoMBean.visualizarProcessos}">
+				<h:outputText value="Permissão Negada para essa funcionalidade" />
+			</p:outputPanel>					                	
+			
+		</ui:define>
+		
+</ui:composition>

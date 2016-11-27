@@ -1,0 +1,44 @@
+10
+
+dir
+2
+http://quintaparte.com/svn/java/advx/WebContent/template
+http://quintaparte.com/svn/java
+
+
+
+2014-03-29T03:40:30.036636Z
+2
+waldenilson
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+528f71dd-636e-4d8e-9087-1dddb0e0732f
+
+
+
+
+
+
+0
+
+css
+dir
+
+images
+dir
+
+js
+dir
+

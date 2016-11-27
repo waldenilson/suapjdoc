@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+                        <!-- START LOGO -->
+                        <div id="logo" class="group">
+                            <a href="/advx/#{contaAdvocaciaMBean.contaAdvocacia.apelido}" title="#{contaAdvocaciaMBean.contaAdvocacia.nome}"><img src="/advx/img/logo/#{contaAdvocaciaMBean.contaAdvocacia.logotipo}" 
+                            	title="#{contaAdvocaciaMBean.contaAdvocacia.nome}" alt="#{contaAdvocaciaMBean.contaAdvocacia.nome}" /></a>
+                        </div>
+                        <!-- END LOGO -->
+                        
+                        <div id="sidebar-header" class="group">
+                            <div class="widget-first widget yit_text_quote">
+                            </div>
+                        </div>
+                        <div class="clearer"></div>
+                        
+                        <hr />
+
+
+</ui:composition>

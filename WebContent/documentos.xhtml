@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/base/base.xhtml">
+      
+      	<ui:define name="funcionalidade">
+			Meus Documentos
+		</ui:define>
+		
+		<ui:define name="descricao">
+			Lista dos meus documentos
+		</ui:define>
+		
+		<ui:define name="body">
+					<div style="width:100%">
+						<div style="float:right">
+							<h:commandLink>
+								<p:graphicImage title="Exportar para PDF" value="/img/pdf.png" />
+								<p:dataExporter target="tbmeus-documentos" type="pdf" fileName="meus-documentos" />
+							</h:commandLink>						
+							<h:commandLink>
+								<p:graphicImage title="Exportar para EXCEL" value="/img/excel.png" />
+								<p:dataExporter target="tbmeus-documentos" type="xls" fileName="meus-documentos" />
+							</h:commandLink>						
+							<h:commandLink>
+								<p:graphicImage title="Exportar para CSV" value="/img/csv.png" />
+								<p:dataExporter target="tbmeus-documentos" type="csv" fileName="meus-documentos" />
+							</h:commandLink>						
+							<h:commandLink>
+								<p:graphicImage title="Exportar para XML" value="/img/xml.png" />
+								<p:dataExporter target="tbmeus-documentos" type="xml" fileName="meus-documentos" />
+							</h:commandLink>						
+						</div>
+					</div>
+					<p:spacer height="40" />
+				<p:outputPanel>		
+					<p:dataTable id="tbmeus-documentos" rowKey="#{documento.id}" selectionMode="single" 
+						emptyMessage="Nenhum documento encontrado"
+						selection="#{documentoMBean.documento}" value="#{documentoMBean.meusDocumentosList}" var="documento">
+						<p:ajax listener="#{documentoMBean.selecionar}" event="rowSelect">
+								<f:setPropertyActionListener target="#{documentoMBean.documento}" value="#{documento}" />
+						</p:ajax>
+						<p:column sortBy="#{documento.titulo}" filterBy="#{documento.titulo}" filterMatchMode="contains" style="width:40%">
+							<f:facet name="header">Titulo</f:facet>
+							<h:outputText value="#{documento.titulo}" />
+						</p:column>
+						<p:column style="width:15%">
+							<f:facet name="header">Data do Upload</f:facet>
+							<h:outputText value="#{documento.dataPostagem}" >
+								<f:convertDateTime pattern="dd/MM/yyyy" locale="pt"/>
+							</h:outputText>
+						</p:column>
+						<p:column style="width:20%">
+							<f:facet name="header">Tipo</f:facet>
+							<h:outputText value="#{documento.tpdocumentoBean.nome}" />
+						</p:column>
+						<p:column style="width:10%">
+							<f:facet name="header">Tamanho</f:facet>
+							<h:outputText value="#{documento.tamanho}" />
+						</p:column>
+						<p:column style="width:15%">
+							<f:facet name="header">Processo</f:facet>
+							<h:outputText value="#{documento.processoBean.numero}" />
+						</p:column>
+					</p:dataTable>
+				</p:outputPanel>
+		</ui:define>
+
+</ui:composition>
