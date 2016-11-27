@@ -62,10 +62,10 @@
 							<p:outputPanel rendered="#{authenticationMBean.usuarioLogado}">
 
 								<p:menubar style="margin-bottom:20px">
-									<p:menuitem icon="ui-icon-note" value="Minhas Tarefas" url="/processo/minhas-tarefas"/>
-									<p:menuitem icon="ui-icon-mail-closed" value="Minhas Mensagens" url="/processo/minhas-mensagens"/>
-									<p:menuitem icon="ui-icon-calendar" value="Meus Eventos" url="/agenda/meus-eventos" />
-									<p:menuitem icon="ui-icon-document" value="Meus Documentos" url="/processo/meus-documentos" />
+									<p:menuitem icon="ui-icon-note" value="Minhas Tarefas" url="#"/>
+									<p:menuitem icon="ui-icon-mail-closed" value="Minhas Mensagens" url="#"/>
+									<p:menuitem icon="ui-icon-calendar" value="Meus Eventos" url="#" />
+									<p:menuitem icon="ui-icon-document" value="Meus Documentos" url="#" />
 									<p:menuitem icon="ui-icon-close" value="Sair" ajax="false" actionListener="#{authenticationMBean.sair}" />
 								</p:menubar>							
 	
@@ -111,10 +111,10 @@
 			                <aside>
 			
 			            	    <p class="dateinfo">
-			            	    	<a href="/sistema/configuracao/perfil">
+			            	    	<a href="#">
 			            	    		<img width="100px" 
 			            	    			title="#{authenticationMBean.usuario.firstName}" 
-			            	    			src="/sistema/img/user/user.jpg"/>
+			            	    			src="/suapjdoc/img/user/user.jpg"/>
 			            	    	</a>
 			            	    </p>
 					    
@@ -124,14 +124,8 @@
 									    <div class="sidemenu">
 							
 							                <ul>
-							                		<li><a href="/sistema/processo/processos" title="processos">Processos </a> </li>
-							                		<li><a href="/sistema/usuario/clientes" title="clientes">Clientes </a> </li>
-							                    	<li><a href="/sistema/usuario/colaboradores" title="colaboradores">Colaboradores </a> </li>
-							                    	<li><a href="/sistema/configuracao/enderecos" title="enderecos-filiais">Endereços / Filiais </a> </li>
-								                    <li><a href="/sistema/configuracao/tipo-documentos" title="tipos-de-documento">Tipos de documento </a> </li>
-							                    	<li><a href="/sistema/configuracao/status" title="status">Status / Situação </a> </li>
-							                    	<li><a href="/sistema/configuracao/grupos" title="grupos-permissoes">Grupos e Permissões </a> </li>
-							                		<li><a href="/sistema/configuracao/escritorio" title="configuracoes">Configurações </a> </li>
+							                    	<li><a href="#" title="grupos-permissoes">Grupos e Permissões </a> </li>
+							                		<li><a href="#" title="configuracoes">Configurações </a> </li>
 											</ul>
 																		
 										</div><br/>
@@ -163,7 +157,7 @@
 		<footer>
 			
 			<p class="footer-left">
-				Versão: 1.08
+				Revisão: 0.30
 					| <a href="#" target="blank"> website </a>
 			</p>
 
