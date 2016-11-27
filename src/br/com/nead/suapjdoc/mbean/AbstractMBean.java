@@ -38,7 +38,6 @@ public abstract class AbstractMBean {
 	
 		public void selecionar(String outcome) {
 
-			//redirect to advx.com.br
 			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();  
 			try {
 				ec.redirect(outcome);

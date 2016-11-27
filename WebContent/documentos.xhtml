@@ -16,6 +16,9 @@
 		
 		<ui:define name="body">
 					<div style="width:100%">
+						<div style="float:left">
+							<p:commandButton value="NOVO" styleClass="btnovo" actionListener="#{documentoMBean.novo}" />
+						</div>
 						<div style="float:right">
 							<h:commandLink>
 								<p:graphicImage title="Exportar para PDF" value="/img/pdf.png" />
@@ -39,31 +42,31 @@
 				<p:outputPanel>		
 					<p:dataTable id="tbmeus-documentos" rowKey="#{documento.id}" selectionMode="single" 
 						emptyMessage="Nenhum documento encontrado"
-						selection="#{documentoMBean.documento}" value="#{documentoMBean.meusDocumentosList}" var="documento">
+						selection="#{documentoMBean.documento}" value="#{documentoMBean.documentos}" var="documento">
 						<p:ajax listener="#{documentoMBean.selecionar}" event="rowSelect">
 								<f:setPropertyActionListener target="#{documentoMBean.documento}" value="#{documento}" />
 						</p:ajax>
-						<p:column sortBy="#{documento.titulo}" filterBy="#{documento.titulo}" filterMatchMode="contains" style="width:40%">
-							<f:facet name="header">Titulo</f:facet>
-							<h:outputText value="#{documento.titulo}" />
+						<p:column sortBy="#{documento.numero}" filterBy="#{documento.numero}" filterMatchMode="contains" style="width:15%">
+							<f:facet name="header">Número</f:facet>
+							<h:outputText value="#{documento.numero}/#{documento.ano}" />
 						</p:column>
-						<p:column style="width:15%">
-							<f:facet name="header">Data do Upload</f:facet>
-							<h:outputText value="#{documento.dataPostagem}" >
-								<f:convertDateTime pattern="dd/MM/yyyy" locale="pt"/>
-							</h:outputText>
-						</p:column>
-						<p:column style="width:20%">
+						<p:column sortBy="#{documento.tipo}" filterBy="#{documento.tipo}" filterMatchMode="contains" style="width:20%">
 							<f:facet name="header">Tipo</f:facet>
-							<h:outputText value="#{documento.tpdocumentoBean.nome}" />
+							<h:outputText value="#{documento.tipo}" />
+						</p:column>
+						<p:column sortBy="#{documento.assunto}" filterBy="#{documento.assunto}" filterMatchMode="contains" style="width:40%">
+							<f:facet name="header">Assunto</f:facet>
+							<h:outputText value="#{documento.assunto}" />
 						</p:column>
 						<p:column style="width:10%">
-							<f:facet name="header">Tamanho</f:facet>
-							<h:outputText value="#{documento.tamanho}" />
+							<f:facet name="header">Destinatário</f:facet>
+							<h:outputText value="#{documento.destinatario}" />
 						</p:column>
 						<p:column style="width:15%">
-							<f:facet name="header">Processo</f:facet>
-							<h:outputText value="#{documento.processoBean.numero}" />
+							<f:facet name="header">Data do Documento</f:facet>
+							<h:outputText value="#{documento.dataDocumento}" >
+								<f:convertDateTime pattern="dd/MM/yyyy" locale="pt"/>
+							</h:outputText>
 						</p:column>
 					</p:dataTable>
 				</p:outputPanel>

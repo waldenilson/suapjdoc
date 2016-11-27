@@ -33,6 +33,7 @@ public class DocumentoMBean extends AbstractMBean implements Serializable {
 	
 	public void novo(){
 		init();
+		this.selecionar();
 	}
 
 	public void salvar() {
@@ -71,6 +72,9 @@ public class DocumentoMBean extends AbstractMBean implements Serializable {
 		}		
 	}
 
+	public void selecionar(){
+		super.selecionar("/suapjdoc/obj-documento.htm");
+	}
 	public Documento getDocumento() {
 		return documento;
 	}
