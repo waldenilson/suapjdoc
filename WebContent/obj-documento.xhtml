@@ -7,11 +7,11 @@
       template="/base/base.xhtml">
       
       	<ui:define name="funcionalidade">
-			Número: #{documentoMBean.documento.numero}
+			Número: #{documentoMBean.documento.numero} / #{documentoMBean.documento.ano}
 		</ui:define>
 		
 		<ui:define name="descricao">
-			<h:outputText value="#{documentoMBean.documento.assunto}" />
+			<h:outputText value="Assunto: #{documentoMBean.documento.assunto}" />
 		</ui:define>
 		
 		<ui:define name="body">
@@ -24,11 +24,11 @@
 										<tbody>
 												<tr>
 													<td> <h:outputText value="Ano: " /> </td>
-													<td> <p:inputText size="10" value="#{documentoMBean.documento.ano}" /> </td>
+													<td> <p:inputText size="10" required="true" value="#{documentoMBean.documento.ano}" /> </td>
 												</tr>
 												<tr>
 													<td> <h:outputText value="Número: " /> </td>
-													<td> <p:inputText size="10" value="#{documentoMBean.documento.numero}" /> </td>
+													<td> <p:inputText size="10" required="true" value="#{documentoMBean.documento.numero}" /> </td>
 												</tr>
 												<tr>
 													<td> <h:outputText value="Setor: " /> </td>
@@ -36,29 +36,25 @@
 												</tr>												
 												<tr>
 													<td> <h:outputText value="Assunto: " /> </td>
-													<td> <p:inputText value="#{documentoMBean.documento.assunto}" /> </td>
+													<td> <p:inputText required="true" size="40" value="#{documentoMBean.documento.assunto}" /> </td>
 												</tr>
 												<tr>
 													<td> <h:outputText value="Remetente: " /> </td>
-													<td> <p:inputText value="#{documentoMBean.documento.remetente}" /> </td>
+													<td> <p:inputText required="true" size="30" value="#{documentoMBean.documento.remetente}" /> </td>
 												</tr>
 												<tr>
 													<td> <h:outputText value="Destinatário: " /> </td>
-													<td> <p:inputText value="#{documentoMBean.documento.destinatario}" /> </td>
+													<td> <p:inputText size="30" required="true" value="#{documentoMBean.documento.destinatario}" /> </td>
 												</tr>
 												<tr>
 													<td> <h:outputText value="Signatário: " /> </td>
-													<td> <p:inputText value="#{documentoMBean.documento.signatario}" /> </td>
-												</tr>
-												<tr>
-													<td> <h:outputText value="Mensagem: " /> </td>
-													<td> <p:inputTextarea value="#{documentoMBean.documento.mensagem}" /> </td>
+													<td> <p:inputText size="30" value="#{documentoMBean.documento.signatario}" /> </td>
 												</tr>
 												<tr>
 													<td> <h:outputText value="Data do Documento: " /> </td>
-													<td> <p:calendar value="#{documentoMBean.documento.dataDocumento}" locale="pt" pattern="dd/MM/yyyy" /> </td>
+													<td> <p:calendar required="true" value="#{documentoMBean.documento.dataDocumento}" locale="pt" pattern="dd/MM/yyyy" /> </td>
 												</tr>
-												<p:outputPanel rendered="#{permissaoMBean.modificarStatusProcesso}">
+												<p:outputPanel>
 													<tr>
 														<td> <h:outputText  value="Status: " /> </td>
 														<td> <p:selectOneMenu style="width:150px" value="#{documentoMBean.documento.tipo}">
@@ -67,6 +63,10 @@
 															</p:selectOneMenu> </td>
 													</tr>
 												</p:outputPanel>
+												<tr>
+													<td> <h:outputText value="Mensagem: " /> </td>
+													<td> <p:inputTextarea cols="50" rows="5" autoResize="true" required="true" value="#{documentoMBean.documento.mensagem}" /> </td>
+												</tr>
 										</tbody>
 									</table>	
 									<br/>
