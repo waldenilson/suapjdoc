@@ -55,11 +55,11 @@ public class AuthUser implements Serializable {
 	@OneToMany(mappedBy="authUserId")
 	private List<Documento> documentos;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
