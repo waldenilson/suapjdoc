@@ -39,12 +39,7 @@ public class DocumentoMBean extends AbstractMBean implements Serializable {
 	public void salvar() {
 
 		if( getDocumento().getAssunto().length() > 2 )
-		{
-			if( !getDocumento().getNumero().equals("") )
-				executar();
-			else
-				facesMensagens(FacesMessage.SEVERITY_WARN, "Informe um número válido.", "");
-		}
+			executar();
 		else
 			facesMensagens(FacesMessage.SEVERITY_WARN, "Informe no minimo 3 letras para o campo assunto.", "");
 
