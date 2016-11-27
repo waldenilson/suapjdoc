@@ -70,6 +70,7 @@ public class DocumentoMBean extends AbstractMBean implements Serializable {
 	public void selecionar(){
 		super.selecionar("/suapjdoc/obj-documento.htm");
 	}
+		
 	public Documento getDocumento() {
 		return documento;
 	}
