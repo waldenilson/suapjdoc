@@ -7,14 +7,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import br.com.nead.suapjdoc.dao.DocumentoDAO;
 import br.com.nead.suapjdoc.entity.Documento;
 
 @Named
 @SessionScoped
-public class DocumentoMBean implements Serializable {
+public class DocumentoMBean extends AbstractMBean implements Serializable {
 
 	/**
 	 * 
@@ -58,28 +57,18 @@ public class DocumentoMBean implements Serializable {
 				//salvou
 			}
 			else
-				facesMensagens(FacesMessage.SEVERITY_ERROR, "ERRO", "");
+				super.facesMensagens(FacesMessage.SEVERITY_ERROR, "ERRO", "");
 		}
 		else{
 			// edicao
 						
 			if( dDAO.update( getDocumento() ) ){
-				facesMensagens(FacesMessage.SEVERITY_INFO, "INFORMAÇÕES ATUALIZADAS", "");
+				super.facesMensagens(FacesMessage.SEVERITY_INFO, "INFORMAÇÕES ATUALIZADAS", "");
 			}
 			else{
-				facesMensagens(FacesMessage.SEVERITY_ERROR, "ERRO", "");				
+				super.facesMensagens(FacesMessage.SEVERITY_ERROR, "ERRO", "");				
 			}
 		}		
-	}
-
-	private void facesMensagens(FacesMessage.Severity msg,String title,String desc){
-		
-		FacesMessage msg2 = new FacesMessage();
-		msg2.setSeverity(msg);
-		msg2.setSummary(title);
-		msg2.setDetail(desc);
-		FacesContext.getCurrentInstance().addMessage(null, msg2);
-
 	}
 
 	public Documento getDocumento() {

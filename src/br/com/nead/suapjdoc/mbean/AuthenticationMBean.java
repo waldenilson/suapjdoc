@@ -1,47 +1,81 @@
 package br.com.nead.suapjdoc.mbean;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
+import javax.servlet.http.HttpServletResponse;
+import br.com.nead.suapjdoc.dao.AuthUserDAO;
+import br.com.nead.suapjdoc.entity.AuthUser;
+import java.io.IOException;
 import java.io.Serializable;
 
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
 
 @Named
 @SessionScoped
-public class AuthenticationMBean implements Serializable {
+public class AuthenticationMBean extends AbstractMBean implements Serializable {
 
 	/**
-	 * 	ATIVIDADE 03
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private AuthUser usuario;
+	private Boolean usuarioLogado;
+	String senha_usuario;
+		
+	private AuthUserDAO udao;
 	
-	private String login, senha;
-	
-	public AuthenticationMBean(){
-		System.out.println("Construtor");		
+	@PostConstruct
+	public void init(){
+		setUsuario(new AuthUser());
+		setUsuarioLogado(false);		
+		udao = new AuthUserDAO();
 	}
-
-	public void acessar(){
-		if(getLogin().equals("admin") && getSenha().equals("admin"))
-			System.out.println("Acessando sistema.");			
-		else{
-			System.out.println("Login e/ou senha incorreto(s). \nLogin: "+getLogin()+" Senha: "+getSenha());
+		
+	public void autenticar()
+	{		
+		getUsuario().setPassword( super.md5( getUsuario().getPassword() ) );
+		AuthUser user = udao.buscarAcesso( getUsuario() );
+		if( user != null )
+		{
+			setUsuarioLogado(true);
+			setUsuario( user );
+			
+			senha_usuario = new AuthUserDAO().findOne( getUsuario().getId() ).getPassword();
+						
+			super.selecionar("/suapjdoc/documentos.htm");
 		}
+		else
+			super.facesMensagens(FacesMessage.SEVERITY_WARN, "Autenticação", "Tente novamente");			
+	}
+		
+	public void sair(){
+		init();
+		HttpServletResponse response = (HttpServletResponse) 
+		FacesContext.getCurrentInstance().getExternalContext().getResponse();  
+		try {
+			response.sendRedirect("/suapjdoc/");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 	
-	public String getLogin() {
-		return login;
+	public AuthUser getUsuario() {
+		return usuario;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(AuthUser usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getSenha() {
-		return senha;
+	public Boolean getUsuarioLogado() {
+		return usuarioLogado;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setUsuarioLogado(Boolean usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
 
 }

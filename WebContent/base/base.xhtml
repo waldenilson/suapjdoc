@@ -11,7 +11,7 @@
 		<style type="text/css">
 			a:link, a:visited {
 				text-decoration: none;
-				color: #{contaAdvocaciaMBean.contaAdvocacia.cormenu};
+				color: #003399;
 			    outline: 0;
 			}
 			a:hover, a:focus, a:active {
@@ -19,7 +19,7 @@
 			}		
 			.sidemenu ul li a:link,
 			.sidemenu ul li a:visited {
-			    color: #{contaAdvocaciaMBean.contaAdvocacia.cormenu};
+			    color: #003399;
 			    padding: 0;
 				font-weight: bold;
 			    text-transform: uppercase;
@@ -31,14 +31,14 @@
 	</h:head>
 
 
-	<h:body id="top" style="background:#{contaAdvocaciaMBean.contaAdvocacia.corfundo}">
+	<h:body id="top" style="background:#eee">
 	
 	<!--header -->
-		<div id="header-wrap" style="background:#{contaAdvocaciaMBean.contaAdvocacia.corfundo}">
+		<div id="header-wrap" style="background:#eee">
 			<header>
 			
 			    <hgroup>
-			        <a href="/sistema/processo/minhas-tarefas"><img alt="#{contaAdvocaciaMBean.contaAdvocacia.nome}" title="#{contaAdvocaciaMBean.contaAdvocacia.nome}" src="/sistema/img/logo/#{contaAdvocaciaMBean.contaAdvocacia.logotipo}"/></a>
+			        <a href="/suapjdoc"><img alt="" title="suapjdoc" src="/suapjdoc/img/logo/logo.png"/></a>
 			    </hgroup>
 			    <form id="quick-search" method="get" action="index.html">
 							    
@@ -59,15 +59,14 @@
 		      		    <div class="primary">
 					
 					<h:form id="form" style="padding: 32px 40px;width:95%">
-							<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+							<p:outputPanel rendered="#{authenticationMBean.usuarioLogado}">
 
 								<p:menubar style="margin-bottom:20px">
 									<p:menuitem icon="ui-icon-note" value="Minhas Tarefas" url="/processo/minhas-tarefas"/>
 									<p:menuitem icon="ui-icon-mail-closed" value="Minhas Mensagens" url="/processo/minhas-mensagens"/>
-									<p:menuitem rendered="#{!autenticacaoMBean.usuario.isCliente}" icon="ui-icon-contact" value="Meus Contatos" url="/agenda/meus-contatos" />
 									<p:menuitem icon="ui-icon-calendar" value="Meus Eventos" url="/agenda/meus-eventos" />
 									<p:menuitem icon="ui-icon-document" value="Meus Documentos" url="/processo/meus-documentos" />
-									<p:menuitem icon="ui-icon-close" value="Sair" ajax="false" actionListener="#{autenticacaoMBean.sair}" />
+									<p:menuitem icon="ui-icon-close" value="Sair" ajax="false" actionListener="#{authenticationMBean.sair}" />
 								</p:menubar>							
 	
 			                    <h2><a href="#"><ui:insert name="funcionalidade" /></a></h2>
@@ -75,27 +74,27 @@
 
 							</p:outputPanel>
 							<p>
-								<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+								<p:outputPanel rendered="#{authenticationMBean.usuarioLogado}">
 									<p:messages autoUpdate="true" showDetail="true" closable="true" />
 									<ui:insert name="body" />
 								</p:outputPanel>
-								<p:outputPanel rendered="#{!autenticacaoMBean.usuarioLogado}">
+								<p:outputPanel rendered="#{!authenticationMBean.usuarioLogado}">
 									<p:messages autoUpdate="true" showDetail="true" closable="true" />
 									<table style="width:70%;top-margin:50px;text-align:center">
 										<tbody>
 											<tr>
 												<td>
-													<p:inputText style="font-size:18px;width:250px" id="login" value="#{autenticacaoMBean.usuario.login}" />
+													<p:inputText style="font-size:18px;width:250px" id="login" value="#{authenticationMBean.usuario.username}" />
 													<p:watermark value="Usuário ou Email" for="login" />
 												</td>
 											</tr><tr>
 												<td>
-													<p:password style="font-size:18px;width:250px" id="senha" value="#{autenticacaoMBean.usuario.senha}" />
+													<p:password style="font-size:18px;width:250px" id="senha" value="#{authenticationMBean.usuario.password}" />
 													<p:watermark value="Senha" for="senha" />
 												</td>
 											</tr><tr>
 												<td>
-													<p:commandButton style="font-size:16px;width:250px" value="ACESSAR" ajax="false" actionListener="#{autenticacaoMBean.autenticar}" />
+													<p:commandButton style="font-size:16px;width:250px" value="ACESSAR" ajax="false" actionListener="#{authenticationMBean.autenticar}" />
 												</td>
 											</tr><tr>
 											</tr>
@@ -107,15 +106,15 @@
 					</h:form>
 		                </div>
 	
-						<p:outputPanel rendered="#{autenticacaoMBean.usuarioLogado}">
+						<p:outputPanel rendered="#{authenticationMBean.usuarioLogado}">
 		
 			                <aside>
 			
 			            	    <p class="dateinfo">
 			            	    	<a href="/sistema/configuracao/perfil">
 			            	    		<img width="100px" 
-			            	    			title="#{autenticacaoMBean.usuario.pessoaBean.nome}" 
-			            	    			src="/sistema/img/user/#{autenticacaoMBean.usuario.foto}"/>
+			            	    			title="#{authenticationMBean.usuario.firstName}" 
+			            	    			src="/sistema/img/user/user.jpg"/>
 			            	    	</a>
 			            	    </p>
 					    
@@ -125,45 +124,17 @@
 									    <div class="sidemenu">
 							
 							                <ul>
-												    <p:outputPanel rendered="#{permissaoMBean.visualizarProcessos}">
-								                		<li><a href="/sistema/processo/processos" title="processos">Processos </a> </li>
-													</p:outputPanel>
-													
-								                    <p:outputPanel rendered="#{permissaoMBean.clientes}">
-								                		<li><a href="/sistema/usuario/clientes" title="clientes">Clientes </a> </li>
-													</p:outputPanel>
-													
-								                    <p:outputPanel rendered="#{permissaoMBean.colaboradores}">
-								                    	<li><a href="/sistema/usuario/colaboradores" title="colaboradores">Colaboradores </a> </li>
-													</p:outputPanel>
-
-								                    <p:outputPanel rendered="#{permissaoMBean.enderecos}">
-								                    	<li><a href="/sistema/configuracao/enderecos" title="enderecos-filiais">Endereços / Filiais </a> </li>
-								                    </p:outputPanel>
-								                    
-								                    <p:outputPanel rendered="#{permissaoMBean.tpdocumento}">
-									                    <li><a href="/sistema/configuracao/tipo-documentos" title="tipos-de-documento">Tipos de documento </a> </li>
-													</p:outputPanel>
-
-								                    <p:outputPanel rendered="#{permissaoMBean.status}">
-								                    	<li><a href="/sistema/configuracao/status" title="status">Status / Situação </a> </li>
-													</p:outputPanel>
-
-								                    <p:outputPanel rendered="#{permissaoMBean.grupos}">
-								                    	<li><a href="/sistema/configuracao/grupos" title="grupos-permissoes">Grupos e Permissões </a> </li>
-								                    </p:outputPanel>
-								                    
-								                    <p:outputPanel rendered="#{permissaoMBean.configuracoes}">
-								                		<li><a href="/sistema/configuracao/escritorio" title="configuracoes">Configurações </a> </li>
-													</p:outputPanel>
+							                		<li><a href="/sistema/processo/processos" title="processos">Processos </a> </li>
+							                		<li><a href="/sistema/usuario/clientes" title="clientes">Clientes </a> </li>
+							                    	<li><a href="/sistema/usuario/colaboradores" title="colaboradores">Colaboradores </a> </li>
+							                    	<li><a href="/sistema/configuracao/enderecos" title="enderecos-filiais">Endereços / Filiais </a> </li>
+								                    <li><a href="/sistema/configuracao/tipo-documentos" title="tipos-de-documento">Tipos de documento </a> </li>
+							                    	<li><a href="/sistema/configuracao/status" title="status">Status / Situação </a> </li>
+							                    	<li><a href="/sistema/configuracao/grupos" title="grupos-permissoes">Grupos e Permissões </a> </li>
+							                		<li><a href="/sistema/configuracao/escritorio" title="configuracoes">Configurações </a> </li>
 											</ul>
 																		
 										</div><br/>
-										<h:outputText value="#{autenticacaoMBean.qtdDocumentos}">
-											<f:convertNumber maxFractionDigits="1" />
-										</h:outputText>
-										<h:outputText value="% de 2GB" />
-																				
 									</h:form>
 								</div>
 			
@@ -193,12 +164,12 @@
 			
 			<p class="footer-left">
 				Versão: 1.08
-					| <a href="http://#{autenticacaoMBean.usuario.contaAdvocacia.website}" target="blank"> #{autenticacaoMBean.usuario.contaAdvocacia.website} </a>
+					| <a href="#" target="blank"> website </a>
 			</p>
 
 		
 			<p class="footer-right">
-			   	<a href="#">advx.com.br</a> |
+			   	<a href="#">website.com.br</a> |
 		        <a href="#top" class="back-to-top">Voltar para o topo</a>
 		    </p>
 		<!-- /footer -->
