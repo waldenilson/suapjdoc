@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.2
 -- Dumped by pg_dump version 9.5.2
 
--- Started on 2016-11-22 16:36:11
+-- Started on 2016-11-27 19:51:04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -39,7 +39,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 181 (class 1259 OID 148154)
+-- TOC entry 181 (class 1259 OID 19936)
 -- Name: auth_group; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -52,7 +52,7 @@ CREATE TABLE auth_group (
 ALTER TABLE auth_group OWNER TO admin;
 
 --
--- TOC entry 182 (class 1259 OID 148157)
+-- TOC entry 182 (class 1259 OID 19939)
 -- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -76,7 +76,7 @@ ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
 
 
 --
--- TOC entry 183 (class 1259 OID 148159)
+-- TOC entry 183 (class 1259 OID 19941)
 -- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -90,7 +90,7 @@ CREATE TABLE auth_group_permissions (
 ALTER TABLE auth_group_permissions OWNER TO admin;
 
 --
--- TOC entry 184 (class 1259 OID 148162)
+-- TOC entry 184 (class 1259 OID 19944)
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -114,7 +114,7 @@ ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
 
 
 --
--- TOC entry 185 (class 1259 OID 148164)
+-- TOC entry 185 (class 1259 OID 19946)
 -- Name: auth_permission; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -129,7 +129,7 @@ CREATE TABLE auth_permission (
 ALTER TABLE auth_permission OWNER TO admin;
 
 --
--- TOC entry 186 (class 1259 OID 148167)
+-- TOC entry 186 (class 1259 OID 19949)
 -- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -153,7 +153,7 @@ ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
 
 
 --
--- TOC entry 187 (class 1259 OID 148169)
+-- TOC entry 187 (class 1259 OID 19951)
 -- Name: auth_user; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -175,7 +175,7 @@ CREATE TABLE auth_user (
 ALTER TABLE auth_user OWNER TO admin;
 
 --
--- TOC entry 188 (class 1259 OID 148172)
+-- TOC entry 188 (class 1259 OID 19954)
 -- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -189,7 +189,7 @@ CREATE TABLE auth_user_groups (
 ALTER TABLE auth_user_groups OWNER TO admin;
 
 --
--- TOC entry 189 (class 1259 OID 148175)
+-- TOC entry 189 (class 1259 OID 19957)
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -213,7 +213,7 @@ ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
 
 
 --
--- TOC entry 190 (class 1259 OID 148177)
+-- TOC entry 190 (class 1259 OID 19959)
 -- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -237,7 +237,7 @@ ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
 
 
 --
--- TOC entry 191 (class 1259 OID 148179)
+-- TOC entry 191 (class 1259 OID 19961)
 -- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -251,7 +251,7 @@ CREATE TABLE auth_user_user_permissions (
 ALTER TABLE auth_user_user_permissions OWNER TO admin;
 
 --
--- TOC entry 192 (class 1259 OID 148182)
+-- TOC entry 192 (class 1259 OID 19964)
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -275,7 +275,7 @@ ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permiss
 
 
 --
--- TOC entry 194 (class 1259 OID 148248)
+-- TOC entry 193 (class 1259 OID 19966)
 -- Name: documento; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -301,7 +301,7 @@ CREATE TABLE documento (
 ALTER TABLE documento OWNER TO admin;
 
 --
--- TOC entry 193 (class 1259 OID 148246)
+-- TOC entry 194 (class 1259 OID 19972)
 -- Name: documento_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
 --
 
@@ -317,7 +317,7 @@ ALTER TABLE documento_id_seq OWNER TO admin;
 
 --
 -- TOC entry 2201 (class 0 OID 0)
--- Dependencies: 193
+-- Dependencies: 194
 -- Name: documento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
 --
 
@@ -325,7 +325,7 @@ ALTER SEQUENCE documento_id_seq OWNED BY documento.id;
 
 
 --
--- TOC entry 2018 (class 2604 OID 148184)
+-- TOC entry 2018 (class 2604 OID 19974)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -333,7 +333,7 @@ ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_s
 
 
 --
--- TOC entry 2019 (class 2604 OID 148185)
+-- TOC entry 2019 (class 2604 OID 19975)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -341,7 +341,7 @@ ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('aut
 
 
 --
--- TOC entry 2020 (class 2604 OID 148186)
+-- TOC entry 2020 (class 2604 OID 19976)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -349,7 +349,7 @@ ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permi
 
 
 --
--- TOC entry 2021 (class 2604 OID 148187)
+-- TOC entry 2021 (class 2604 OID 19977)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -357,7 +357,7 @@ ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq
 
 
 --
--- TOC entry 2022 (class 2604 OID 148188)
+-- TOC entry 2022 (class 2604 OID 19978)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -365,7 +365,7 @@ ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user
 
 
 --
--- TOC entry 2023 (class 2604 OID 148189)
+-- TOC entry 2023 (class 2604 OID 19979)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -373,7 +373,7 @@ ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 2024 (class 2604 OID 148251)
+-- TOC entry 2024 (class 2604 OID 19980)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -381,7 +381,7 @@ ALTER TABLE ONLY documento ALTER COLUMN id SET DEFAULT nextval('documento_id_seq
 
 
 --
--- TOC entry 2173 (class 0 OID 148154)
+-- TOC entry 2173 (class 0 OID 19936)
 -- Dependencies: 181
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: admin
 --
@@ -401,7 +401,7 @@ SELECT pg_catalog.setval('auth_group_id_seq', 15, true);
 
 
 --
--- TOC entry 2175 (class 0 OID 148159)
+-- TOC entry 2175 (class 0 OID 19941)
 -- Dependencies: 183
 -- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: admin
 --
@@ -418,7 +418,7 @@ SELECT pg_catalog.setval('auth_group_permissions_id_seq', 146, true);
 
 
 --
--- TOC entry 2177 (class 0 OID 148164)
+-- TOC entry 2177 (class 0 OID 19946)
 -- Dependencies: 185
 -- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: admin
 --
@@ -435,15 +435,16 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 107, true);
 
 
 --
--- TOC entry 2179 (class 0 OID 148169)
+-- TOC entry 2179 (class 0 OID 19951)
 -- Dependencies: 187
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO auth_user (password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, id) VALUES ('202cb962ac59075b964b07152d234b70', '2016-11-27 03:01:46+00', true, 'admin', 'Waldenilson', 'Carneiro', 'email@gmail.com', true, true, '2016-11-27 06:01:46+00', 78);
 
 
 --
--- TOC entry 2180 (class 0 OID 148172)
+-- TOC entry 2180 (class 0 OID 19954)
 -- Dependencies: 188
 -- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: admin
 --
@@ -465,11 +466,11 @@ SELECT pg_catalog.setval('auth_user_groups_id_seq', 184, true);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('auth_user_id_seq', 76, true);
+SELECT pg_catalog.setval('auth_user_id_seq', 78, true);
 
 
 --
--- TOC entry 2183 (class 0 OID 148179)
+-- TOC entry 2183 (class 0 OID 19961)
 -- Dependencies: 191
 -- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: admin
 --
@@ -486,24 +487,25 @@ SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
 
 
 --
--- TOC entry 2186 (class 0 OID 148248)
--- Dependencies: 194
+-- TOC entry 2185 (class 0 OID 19966)
+-- Dependencies: 193
 -- Data for Name: documento; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO documento (id, numero, ano, setor, remetente, instituicao_destinatario, destinatario, signatario, cargo_signatario, data_documento, assunto, mensagem, auth_user_id, data_cadastro, tipo) VALUES (2, 121, 2016, '', '', NULL, '', '', NULL, '2016-11-03', 'assunto', '', NULL, NULL, 'MEMO');
 
 
 --
 -- TOC entry 2208 (class 0 OID 0)
--- Dependencies: 193
+-- Dependencies: 194
 -- Name: documento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('documento_id_seq', 1, false);
+SELECT pg_catalog.setval('documento_id_seq', 2, true);
 
 
 --
--- TOC entry 2026 (class 2606 OID 148191)
+-- TOC entry 2026 (class 2606 OID 19982)
 -- Name: auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -512,7 +514,7 @@ ALTER TABLE ONLY auth_group
 
 
 --
--- TOC entry 2033 (class 2606 OID 148193)
+-- TOC entry 2033 (class 2606 OID 19984)
 -- Name: auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -521,7 +523,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- TOC entry 2029 (class 2606 OID 148195)
+-- TOC entry 2029 (class 2606 OID 19986)
 -- Name: auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -530,7 +532,7 @@ ALTER TABLE ONLY auth_group
 
 
 --
--- TOC entry 2036 (class 2606 OID 148197)
+-- TOC entry 2036 (class 2606 OID 19988)
 -- Name: auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -539,7 +541,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
--- TOC entry 2044 (class 2606 OID 148199)
+-- TOC entry 2044 (class 2606 OID 19990)
 -- Name: auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -548,7 +550,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- TOC entry 2038 (class 2606 OID 148201)
+-- TOC entry 2038 (class 2606 OID 19992)
 -- Name: auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -557,7 +559,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
--- TOC entry 2048 (class 2606 OID 148203)
+-- TOC entry 2048 (class 2606 OID 19994)
 -- Name: auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -566,7 +568,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- TOC entry 2040 (class 2606 OID 148205)
+-- TOC entry 2040 (class 2606 OID 19996)
 -- Name: auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -575,7 +577,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
--- TOC entry 2051 (class 2606 OID 148256)
+-- TOC entry 2051 (class 2606 OID 19998)
 -- Name: pk_documento; Type: CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -584,7 +586,7 @@ ALTER TABLE ONLY documento
 
 
 --
--- TOC entry 2027 (class 1259 OID 148206)
+-- TOC entry 2027 (class 1259 OID 19999)
 -- Name: auth_group_name_like; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -592,7 +594,7 @@ CREATE INDEX auth_group_name_like ON auth_group USING btree (name varchar_patter
 
 
 --
--- TOC entry 2030 (class 1259 OID 148207)
+-- TOC entry 2030 (class 1259 OID 20000)
 -- Name: auth_group_permissions_group_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -600,7 +602,7 @@ CREATE INDEX auth_group_permissions_group_id ON auth_group_permissions USING btr
 
 
 --
--- TOC entry 2031 (class 1259 OID 148208)
+-- TOC entry 2031 (class 1259 OID 20001)
 -- Name: auth_group_permissions_permission_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -608,7 +610,7 @@ CREATE INDEX auth_group_permissions_permission_id ON auth_group_permissions USIN
 
 
 --
--- TOC entry 2034 (class 1259 OID 148209)
+-- TOC entry 2034 (class 1259 OID 20002)
 -- Name: auth_permission_content_type_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -616,7 +618,7 @@ CREATE INDEX auth_permission_content_type_id ON auth_permission USING btree (con
 
 
 --
--- TOC entry 2042 (class 1259 OID 148210)
+-- TOC entry 2042 (class 1259 OID 20003)
 -- Name: auth_user_groups_group_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -624,7 +626,7 @@ CREATE INDEX auth_user_groups_group_id ON auth_user_groups USING btree (group_id
 
 
 --
--- TOC entry 2045 (class 1259 OID 148211)
+-- TOC entry 2045 (class 1259 OID 20004)
 -- Name: auth_user_groups_user_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -632,7 +634,7 @@ CREATE INDEX auth_user_groups_user_id ON auth_user_groups USING btree (user_id);
 
 
 --
--- TOC entry 2046 (class 1259 OID 148213)
+-- TOC entry 2046 (class 1259 OID 20005)
 -- Name: auth_user_user_permissions_permission_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -640,7 +642,7 @@ CREATE INDEX auth_user_user_permissions_permission_id ON auth_user_user_permissi
 
 
 --
--- TOC entry 2049 (class 1259 OID 148214)
+-- TOC entry 2049 (class 1259 OID 20006)
 -- Name: auth_user_user_permissions_user_id; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -648,7 +650,7 @@ CREATE INDEX auth_user_user_permissions_user_id ON auth_user_user_permissions US
 
 
 --
--- TOC entry 2041 (class 1259 OID 148215)
+-- TOC entry 2041 (class 1259 OID 20007)
 -- Name: auth_user_username_like; Type: INDEX; Schema: public; Owner: admin
 --
 
@@ -656,7 +658,7 @@ CREATE INDEX auth_user_username_like ON auth_user USING btree (username varchar_
 
 
 --
--- TOC entry 2052 (class 2606 OID 148216)
+-- TOC entry 2052 (class 2606 OID 20008)
 -- Name: auth_group_permissions_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -665,7 +667,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- TOC entry 2054 (class 2606 OID 148221)
+-- TOC entry 2054 (class 2606 OID 20013)
 -- Name: auth_user_groups_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -674,7 +676,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- TOC entry 2055 (class 2606 OID 148226)
+-- TOC entry 2055 (class 2606 OID 20018)
 -- Name: auth_user_groups_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -683,7 +685,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- TOC entry 2056 (class 2606 OID 148231)
+-- TOC entry 2056 (class 2606 OID 20023)
 -- Name: auth_user_user_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -692,7 +694,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- TOC entry 2057 (class 2606 OID 148236)
+-- TOC entry 2057 (class 2606 OID 20028)
 -- Name: auth_user_user_permissions_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -701,7 +703,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- TOC entry 2058 (class 2606 OID 148257)
+-- TOC entry 2058 (class 2606 OID 20033)
 -- Name: fk_documento_auth_user; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -710,7 +712,7 @@ ALTER TABLE ONLY documento
 
 
 --
--- TOC entry 2053 (class 2606 OID 148241)
+-- TOC entry 2053 (class 2606 OID 20038)
 -- Name: permission_id_refs_id_6ba0f519; Type: FK CONSTRAINT; Schema: public; Owner: admin
 --
 
@@ -720,7 +722,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 --
 -- TOC entry 2193 (class 0 OID 0)
--- Dependencies: 6
+-- Dependencies: 7
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
 
@@ -730,7 +732,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2016-11-22 16:36:11
+-- Completed on 2016-11-27 19:51:06
 
 --
 -- PostgreSQL database dump complete
