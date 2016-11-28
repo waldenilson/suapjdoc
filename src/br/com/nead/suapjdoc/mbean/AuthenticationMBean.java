@@ -1,11 +1,13 @@
 package br.com.nead.suapjdoc.mbean;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletResponse;
+import br.com.nead.suapjdoc.controller.IController;
 import br.com.nead.suapjdoc.dao.AuthUserDAO;
 import br.com.nead.suapjdoc.entity.AuthUser;
 import java.io.IOException;
@@ -23,6 +25,9 @@ public class AuthenticationMBean extends AbstractMBean implements Serializable {
 	private AuthUser usuario;
 	private Boolean usuarioLogado;
 	String senha_usuario;
+	
+	@EJB
+	private IController controller;
 		
 	private AuthUserDAO udao;
 	
@@ -35,7 +40,7 @@ public class AuthenticationMBean extends AbstractMBean implements Serializable {
 		
 	public void autenticar()
 	{		
-		getUsuario().setPassword( super.md5( getUsuario().getPassword() ) );
+		getUsuario().setPassword( controller.md5( getUsuario().getPassword() ) );
 		AuthUser user = udao.buscarAcesso( getUsuario() );
 		if( user != null )
 		{

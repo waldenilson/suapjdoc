@@ -16,25 +16,20 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.htm</url-pattern>
   </servlet-mapping>
-
   <context-param>
     <param-name>primefaces.THEME</param-name>
     <param-value>bootstrap</param-value>
   </context-param>
-  
-	<context-param>
-    	<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-    	<param-value>server</param-value>
-    </context-param>  
-      
+  <context-param>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>server</param-value>
+  </context-param>
   <error-page>
-      <error-code>404</error-code>
-      <location>/erro-404.html</location>      
+    <error-code>404</error-code>
+    <location>/erro-404.html</location>
   </error-page>
-   
   <error-page>
-      <error-code>500</error-code>
-      <location>/erro-500.html</location>      
+    <error-code>500</error-code>
+    <location>/erro-500.html</location>
   </error-page>
-
 </web-app>
